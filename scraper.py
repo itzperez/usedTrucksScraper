@@ -2,7 +2,7 @@ from zenrows import ZenRowsClient
 from parseHTML import parse, createRows
 
 def scraper(fuelType, url):
-      client = ZenRowsClient("0e84b0b58464fabbdb04e27c410e3f831f2912ef")
+      client = ZenRowsClient("54d5664d8c4bbc3d293484a83f1ed35a56ccee84")
       params = {"js_render":"true","antibot":"true"}
       rows = []
       currentURL = url

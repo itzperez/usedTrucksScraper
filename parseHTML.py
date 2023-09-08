@@ -47,6 +47,12 @@ def createRows(arrayOfListings, fuelType):
       #Commercial Truck Trader assigns value 0 to listings with unknown price
       if price == 0:
          continue
+
+      #if mileage unknown, disregard
+      if 'mileage' in listing:
+         mileage = listing['mileage']['raw']
+      else: 
+         continue
       
       #string in the format 'Month Day Year'
       listingDate = listing['create_date_formatted']['raw']
@@ -74,7 +80,10 @@ def createRows(arrayOfListings, fuelType):
          row.append(listing['model_name']['raw'][0])
       else:
          row.append('unknown')
-
+      if 'category_name' in listing:
+         row.append(listing['category_name']['raw'][0])
+      else:
+         row.append('unknown')     
       if 'year' in listing:
          row.append(listing['year']['raw'])
       else:
@@ -82,10 +91,7 @@ def createRows(arrayOfListings, fuelType):
 
       row.append(fuelType)
       
-      if 'mileage' in listing:
-        row.append(listing['mileage']['raw'])
-      else:
-         row.append('unknown')
+      row.append(mileage)
 
       if 'description' in listing:
          description = listing['description']['raw']
